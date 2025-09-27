@@ -1,106 +1,78 @@
-# 🍳 Panduan Kolaborasi Tim - Proyek Asisten Dapur AI
+# 📄 Project Overview: Asisten Dapur AI
 
-Selamat datang di tim! Agar kolaborasi kita lancar, efisien, dan bebas dari drama "kode hilang" atau "kerjaan ketimpa", kita akan menggunakan Git dan GitHub dengan alur kerja yang sudah disepakati.
-
-##  ана Analogi: Folder Ajaib di Awan
-
-Bayangkan kita punya satu **"Folder Ajaib" 📁** (disebut **Repository** atau **Repo**) yang disimpan di GitHub. Ini adalah versi "resmi" dari proyek kita. Setiap dari kita akan menyalin (clone) folder ini ke laptop masing-masing.
-
-Kita akan bekerja di salinan lokal kita. Jika pekerjaan kita sudah selesai dan bagus, baru kita ajukan untuk digabungkan ke folder pusat agar semua orang bisa mendapatkan update-nya.
+**Nama Tim:** SIGMA (Σ)
+**Proyek:** AWS Back-End Academy 2025 Online Hackathon
 
 ---
 
-## 🔑 Konsep Inti Git yang Wajib Dipahami
+## Ringkasan Eksekutif
 
-1.  **Branch (Cabang 🌿):**
-    > Jangan pernah bekerja langsung di `main`! `main` adalah batang utama pohon. Untuk setiap tugas baru (misal: "memperbaiki tombol"), buatlah **cabang baru**. Di cabang inilah kamu bebas bekerja tanpa mengganggu orang lain. **Satu tugas = Satu cabang**.
-
-2.  **Commit (Simpan/Snapshot 📸):**
-    > `commit` adalah cara menyimpan "snapshot" atau "foto" dari pekerjaanmu di satu titik waktu. Setiap commit memiliki pesan yang menjelaskan perubahan yang kamu buat.
-
-3.  **Push (Kirim 🚀):**
-    > Setelah menyimpan beberapa `commit` di cabang lokalmu, `push` adalah perintah untuk mengirim cabang tersebut ke Repository di GitHub agar bisa dilihat oleh tim.
-
-4.  **Pull Request (Ajukan Proposal 📬):**
-    > Setelah `push`, kamu membuat **Pull Request (PR)** di GitHub. Ini adalah cara formal untuk bilang: *"Hai tim, kerjaanku sudah selesai. Tolong dicek sebelum digabungkan ke `main`."*
-
-5.  **Merge (Gabung ✅):**
-    > Setelah PR disetujui, perubahan dari cabangmu akan digabungkan secara resmi ke `main`.
+**Asisten Dapur AI** adalah aplikasi web cerdas yang dirancang untuk memecahkan masalah umum "bingung mau masak apa" dengan memanfaatkan bahan-bahan yang sudah ada di dapur. Dengan menggunakan kekuatan AI generatif dari **Amazon Bedrock**, aplikasi ini mengubah daftar bahan sederhana menjadi resep masakan yang lezat dan mudah diikuti, membantu pengguna menghemat waktu, mengurangi sisa makanan, dan menemukan inspirasi memasak setiap hari.
 
 ---
 
-## 🔄 Alur Kerja Tim (Wajib Diikuti!)
+### 1. Analisis Masalah
 
-Ini adalah siklus kerja yang akan kita pakai terus-menerus.
+* **Masalah Utama yang Diselesaikan:**
+    Banyak orang mengalami "creative block" di dapur. Mereka memiliki bahan-bahan dasar namun terjebak dalam rutinitas menu yang sama atau tidak tahu bagaimana mengolahnya menjadi hidangan yang berbeda. Contoh kasus: *"Aku punya ayam, bawang, dan kecap di kulkas, tapi bingung mau masak apa selain digoreng."* Hal ini seringkali berujung pada kebosanan atau bahkan sisa bahan makanan yang terbuang.
 
-### A. Persiapan (Hanya dilakukan sekali)
+* **Target Pengguna Utama:**
+    * **Anak kos & Mahasiswa:** Kelompok yang sering memiliki bahan makanan dan alat masak yang terbatas, serta membutuhkan ide resep yang cepat dan hemat.
+    * **Pemula dalam Memasak:** Individu yang baru belajar memasak dan membutuhkan panduan langkah demi langkah yang jelas.
+    * **Ibu Rumah Tangga/Profesional Sibuk:** Mereka yang butuh inspirasi cepat untuk menu harian tanpa harus menghabiskan waktu mencari resep secara manual.
 
-1.  **Ketua Tim:** Membuat repository ini di GitHub, mengundang anggota tim sebagai kolaborator, dan mengunggah file awal (`index.html`, `style.css`, `script.js`) ke `main`.
-2.  **Semua Anggota:** Melakukan `clone` repository ini ke komputer masing-masing.
-    ```bash
-    git clone [URL-repo-dari-GitHub]
-    ```
+### 2. Solusi & Fitur Inti (MVP)
 
-### B. Siklus Kerja Harian (Diulang untuk setiap tugas)
+* **Solusi yang Ditawarkan:**
+    Sebuah platform berbasis AI yang berfungsi sebagai asisten koki virtual. Pengguna cukup memasukkan bahan yang mereka miliki, dan AI akan meracik resep yang paling sesuai.
 
-Misalnya, kamu mendapat tugas "Menambahkan Animasi Loading".
+* **Fitur Inti (Minimum Viable Product):**
+    Fokus utama untuk hackathon ini adalah satu fitur yang paling berdampak:
+    > **"Pengguna memasukkan daftar bahan dalam bahasa natural, dan AI akan memberikan satu resep masakan lengkap yang mencakup Judul, Daftar Bahan yang dibutuhkan, dan Langkah-langkah Memasak yang detail."**
 
-1.  **Sinkronisasi Dulu!**
-    Pastikan kodemu adalah yang paling baru. Selalu jalankan perintah ini sebelum memulai pekerjaan baru.
-    ```bash
-    git pull origin main
-    ```
+* **Rencana Pengembangan:**
+    Jika waktu memungkinkan, fitur selanjutnya adalah menambahkan kemampuan AI untuk menghasilkan gambar dari masakan yang direkomendasikan.
 
-2.  **Buat Cabang Baru**
-    Buat "arena bermain" pribadimu. Beri nama yang deskriptif.
-    ```bash
-    # Contoh nama branch untuk fitur baru
-    git checkout -b feat/tambah-animasi-loading
+### 3. Arsitektur & Alur Teknis
 
-    # Contoh nama branch untuk perbaikan bug
-    # git checkout -b fix/tombol-tidak-berfungsi
-    ```
+Kami akan mengimplementasikan arsitektur **serverless** yang modern, efisien, dan skalabel di AWS.
 
-3.  **Kerjakan Tugasmu**
-    Saatnya *ngoding*! Buka VS Code dan buat perubahan yang diperlukan.
+* **Komponen Arsitektur:**
+    1.  **Front-end:** HTML, CSS, JavaScript (UI untuk input pengguna).
+    2.  **Amazon API Gateway:** Sebagai pintu gerbang (endpoint) yang aman untuk menerima permintaan dari front-end.
+    3.  **AWS Lambda:** Sebagai "otak" back-end yang menjalankan logika bisnis tanpa perlu mengelola server.
+    4.  **Amazon Bedrock:** Layanan AI generatif yang akan membuat resep.
 
-4.  **Simpan Progres (Commit)**
-    Simpan perubahanmu secara berkala dengan pesan yang jelas.
-    ```bash
-    # 1. Pilih semua file yang berubah
-    git add .
+* **Alur Kerja Aplikasi (End-to-End Flow):**
+    1.  Pengguna memasukkan bahan-bahan di antarmuka web.
+    2.  Front-end mengirim permintaan (call) ke endpoint API Gateway.
+    3.  API Gateway secara otomatis memicu eksekusi fungsi Lambda.
+    4.  Fungsi Lambda memformat input dari pengguna menjadi *prompt* yang efektif.
+    5.  Lambda memanggil model AI (misalnya, Anthropic Claude) di Amazon Bedrock dengan *prompt* tersebut.
+    6.  Bedrock memproses *prompt* dan menghasilkan resep dalam format teks.
+    7.  Lambda menerima hasil dari Bedrock dan memformatnya menjadi respons JSON.
+    8.  API Gateway meneruskan respons tersebut kembali ke front-end.
+    9.  Front-end menampilkan resep yang sudah jadi kepada pengguna.
 
-    # 2. Buat snapshot dengan pesan
-    git commit -m "feat: Menambahkan animasi spinner saat loading"
-    ```
+### 4. Rencana Implementasi & Best Practices
 
-5.  **Kirim ke GitHub (Push)**
-    Jika pekerjaan di cabangmu sudah selesai, unggah ke GitHub.
-    ```bash
-    git push origin feat/tambah-animasi-loading
-    ```
+Berdasarkan konsultasi dan *best practices* AWS, berikut adalah poin-poin yang akan kami terapkan:
 
-6.  **Buat Pull Request (PR) di GitHub**
-    - Buka halaman repository di GitHub.
-    - Klik tombol **"Compare & pull request"** yang muncul untuk cabang barumu.
-    - Beri judul yang jelas, tulis deskripsi singkat, dan tambahkan **Reviewers** (pilih teman setim).
-    - Klik **"Create pull request"**.
+* **Implementasi AI (Amazon Bedrock):**
+    * **Model:** Menggunakan model `Anthropic Claude 3 Sonnet` karena kemampuannya yang kuat dalam pemahaman bahasa dan pembuatan konten kreatif.
+    * **Prompt Engineering:** Merancang *prompt template* yang robust untuk memastikan output resep selalu konsisten dalam format (Judul, Bahan, Langkah-langkah).
 
-7.  **Review dan Merge**
-    - Tim akan me-review PR-mu.
-    - Jika disetujui, salah satu anggota akan menekan tombol **"Merge pull request"**.
-    - Hore! Karyamu sudah masuk ke `main`!
+* **Optimalisasi Back-end (AWS Lambda):**
+    * Menggunakan *environment variables* untuk menyimpan konfigurasi (seperti ID Model Bedrock) agar kode lebih bersih.
+    * Mengimplementasikan *error handling* yang baik untuk mengelola potensi kegagalan saat memanggil API Bedrock.
+    * Mengatur alokasi memori yang optimal (diuji antara 512MB - 1GB) untuk performa terbaik.
 
-8.  **Ulangi Siklus**
-    Semua anggota tim sekarang harus kembali ke **Langkah 1 (`git pull origin main`)** untuk mendapatkan versi terbaru dari proyek sebelum memulai tugas baru.
+* **Keamanan & Konfigurasi (API Gateway & IAM):**
+    * Mengaktifkan **CORS** (Cross-Origin Resource Sharing) di API Gateway untuk integrasi yang mulus dengan front-end.
+    * Menerapkan prinsip **Least Privilege** pada IAM Role yang digunakan oleh Lambda, memberinya izin hanya untuk `bedrock:InvokeModel`.
+    * Melakukan validasi input dasar di Lambda untuk mencegah *prompt injection*.
 
----
-
-## ⭐ Aturan Emas Tim Kita
-
--   **DILARANG KERAS** melakukan `push` langsung ke branch `main`. Selalu gunakan alur Pull Request.
--   **SELALU** jalankan `git pull origin main` sebelum membuat branch baru.
--   Tulis nama branch dan pesan `commit` yang jelas dan informatif.
--   Jika ada kesulitan, jangan sungkan untuk bertanya di grup!
-
-Selamat bekerja, tim! 💪
+* **Fokus Selama Hackathon:**
+    1.  Membangun alur end-to-end yang fungsional secepat mungkin.
+    2.  Memastikan *user experience* (UX) yang *smooth* dan intuitif.
+    3.  Memprioritaskan fungsionalitas inti (MVP) di atas fitur-fitur tambahan.
