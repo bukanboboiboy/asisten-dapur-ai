@@ -17,8 +17,8 @@ generateBtn.addEventListener('click', async () => {
 
     try {
         // **PENTING: Ganti URL ini dengan URL API Gateway-mu yang baru**
-        const apiUrl = 'https://YOUR-NEW-API-GATEWAY-URL/generate-recipe'; 
-        
+        const apiUrl = 'https://0fzrd2ww9b.execute-api.us-east-1.amazonaws.com/default/AI-Kitchen-Assistant';
+
         const payload = {
             query: query
         };
@@ -32,8 +32,16 @@ generateBtn.addEventListener('click', async () => {
         const result = await response.json();
 
         if (response.ok) {
-            // Tampilkan hasil resep di area hasil
-            resultArea.textContent = result.recipe;
+            // Tampilkan hasil teks resep
+            recipeText.textContent = result.recipe;
+            
+            // Tampilkan hasil gambar dari data Base64
+            if (result.image) {
+                // Ini adalah baris kuncinya
+                recipeImage.src = 'data:image/png;base64,' + result.image;
+                recipeImage.style.display = 'block';
+            }
+
             resultArea.style.display = 'block';
         } else {
             throw new Error(result.message || 'Gagal menghasilkan resep.');
