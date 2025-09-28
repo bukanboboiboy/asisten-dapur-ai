@@ -38,7 +38,7 @@ Ini adalah siklus kerja yang akan kita pakai terus-menerus.
 1.  **Ketua Tim:** Membuat repository ini di GitHub, mengundang anggota tim sebagai kolaborator, dan mengunggah file awal (`index.html`, `style.css`, `script.js`) ke `main`.
 2.  **Semua Anggota:** Melakukan `clone` repository ini ke komputer masing-masing.
     ```bash
-    git clone [URL-repo-dari-GitHub]
+    git clone https://github.com/bukanboboiboy/asisten-dapur-ai.git
     ```
 
 ### B. Siklus Kerja Harian (Diulang untuk setiap tugas)
