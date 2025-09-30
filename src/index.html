@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Generator</title>
+    <!-- Font Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link to your external CSS file (kept as requested) -->
+    <link href="/asisten-dapur-ai/src/assets/css/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/script.js" />
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section>
+      <div>
+        <h1>AI Recipe Generator</h1>
+        <p>
+          Masukkan bahan-bahan yang Anda miliki, dan biarkan AI kami membuatkan
+          resep lezat untuk Anda!
+        </p>
+
+        <!-- Input area for user query -->
+        <div>
+          <textarea
+            id="recipeQuery"
+            placeholder="Contoh: ayam, bawang bombay, paprika, tomat..."
+          ></textarea>
+        </div>
+        <!-- Generate button -->
+        <button id="generateBtn">Buat Resep</button>
+      </div>
+    </section>
+
+    <!-- Tutorial Section -->
+
+    <section>
+      <!-- 
+        1. Tuliskan bahan yang anda miliki atau yang ingin anda gunakan ke dalam masakan
+        2. tekan tombol "Buat Resep" 
+        3. Resep berdasarkan bahan-bahan yang anda punya atau ingin gunakan sudah tersedia
+        4. Sangat di sarankan untuk menuliskan nama "bahan" untuk hasil resep yang lebih optimal
+        
+        _Section ini akan hilang jika generateBtn di tekan_
+
+        -->
+    </section>
+
+    <!--RecipeSection  -->
+    <section>
+      <!-- Loading indicator (initially hidden) -->
+      <div id="loader"></div>
+
+      <!-- Area to display the generated recipe -->
+      <div id="resultArea"></div>
+    </section>
+
+    <!-- footer -->
+    <section></section>
+  </body>
+</html>
