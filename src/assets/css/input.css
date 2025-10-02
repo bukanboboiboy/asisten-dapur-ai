@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+@theme {
+  /* 1. WARNA BRAND / UTAMA */
+  /* Warna utama yang merepresentasikan brand (merah pada logo & judul) */
+  --color-primary: #ea5e5e;
+  --color-primary-dark: #d94848; /* Untuk state hover */
+  --color-primary-darker: #c33f3f; /* Untuk state active/clicked */
+
+  /* 2. WARNA SEMANTIK / AKSI */
+  /* Warna untuk aksi positif atau sukses (hijau pada tombol) */
+  --color-success: #98d468;
+  --color-success-dark: #82b954; /* Untuk state hover */
+
+  /* Warna untuk notifikasi error atau bahaya (walau tidak ada di desain, ini best practice) */
+  --color-danger: #e53e3e;
+  --color-danger-dark: #c53030;
+
+  /* 3. WARNA LATAR & PERMUKAAN (BACKGROUND & SURFACE) */
+  /* Latar belakang utama halaman */
+  --color-background: #ffffff;
+
+  /* Latar belakang untuk elemen di atasnya seperti input field atau card */
+  --color-surface: #f1feea;
+
+  /* Warna untuk garis pemisah atau border */
+  --color-border: #e0e0e0;
+
+  /* 4. WARNA TEKS */
+  /* Warna teks yang paling dominan */
+  --color-text-primary: #555555;
+
+  /* Warna teks sekunder yang kurang dominan (deskripsi, sub-judul) */
+  --color-text-secondary: #888888;
+
+  /* Warna teks yang kontras untuk diletakkan di atas background warna primer */
+  --color-text-on-primary: #ffffff;
+
+  /* Warna teks yang kontras untuk diletakkan di atas background warna sukses */
+  --color-text-on-success: #ffffff;
+}
+
+@reference base, components, utilities;
+
+@layer components {
+  .generateBtn {
+    @apply bg-success;
+  }
+}
