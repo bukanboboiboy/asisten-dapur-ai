@@ -17,63 +17,145 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav>
+    <nav class="navbar">
       <ul>
-        <a href="">
-          <img src="" alt="Logo Asisten Dapur" />
-        </a>
+        <img src="" alt="Logo Asisten Dapur" />
+        <a href="">SmartChef </a>
       </ul>
       <ul>
         <li><a href="">Home</a></li>
-        <li><a href=""></a>Tutorial</li>
-        <li><a href=""></a>About</li>
+        <li><a href="">Tutorial</a></li>
+        <li><a href="">About</a></li>
       </ul>
     </nav>
     <!-- Hero Section -->
-    <section>
-      <div>
-        <h1>AI Recipe Generator</h1>
+    <section class="hero">
+      <div class="promptplace">
+        <h1>Mau Masak Apa Hari Ini?</h1>
         <p>
-          Masukkan bahan-bahan yang Anda miliki, dan biarkan AI kami membuatkan
-          resep lezat untuk Anda!
+          Stop bengong bingung makan apa! <br />
+          Ketik saja bahan yang kamu punya, biar AI kasih resep spesial anti
+          ribet
         </p>
-
         <!-- Input area for user query -->
-        <div>
+        <div class="inputarea">
           <textarea
+            class="overflow-hidden box-border resize-none"
             id="recipeQuery"
             placeholder="Contoh: ayam, bawang bombay, paprika, tomat..."
           ></textarea>
         </div>
         <!-- Generate button -->
-        <button id="generateBtn">Buat Resep</button>
+        <button class="generateBtn" id="generateBtn">Buat Resep</button>
+        <div class="loader" id="loadingIndicator"></div>
+      </div>
+      <div class="card-container">
+        <img src="assets/img/5.png" alt="" class="background-shape" />
+
+        <img
+          src="assets/img/sepiringnasgor.png"
+          alt="Makanan dengan Telur Mata Sapi"
+          class="food-image"
+        />
       </div>
     </section>
-
-    <!-- Tutorial Section -->
-
     <section>
-      <!-- 
-        1. Tuliskan bahan yang anda miliki atau yang ingin anda gunakan ke dalam masakan
-        2. tekan tombol "Buat Resep" 
-        3. Resep berdasarkan bahan-bahan yang anda punya atau ingin gunakan sudah tersedia
-        4. Sangat di sarankan untuk menuliskan nama "bahan" untuk hasil resep yang lebih optimal
-        
-        _Section ini akan hilang jika generateBtn di tekan_
-
-        -->
-    </section>
-
-    <!--RecipeSection  -->
-    <section>
-      <!-- Loading indicator (initially hidden) -->
-      <div id="loader"></div>
-
-      <!-- Area to display the generated recipe -->
-      <div id="resultArea"></div>
+      <div class="result-area" id="resultArea">
+        <!-- Hasil resep dari AI akan muncul di sini -->
+        <img
+          id="recipeImage"
+          src=""
+          alt="Gambar Resep AI"
+          style="
+            display: none;
+            max-width: 100%;
+            border-radius: 12px;
+            margin-bottom: 25px;
+          "
+        />
+      </div>
     </section>
 
     <!-- footer -->
     <footer></footer>
+
+    <script>
+      const textarea = document.getElementById("recipeQuery");
+      const generateBtn = document.getElementById("generateBtn");
+
+      // auto resize pas ngetik
+      textarea.addEventListener("input", () => {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+      });
+
+      // enter handler
+      textarea.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault(); // cegah newline
+          generateBtn.click(); // trigger tombol
+        }
+      });
+      // Pastikan ID ini cocok dengan yang ada di HTML Anda
+      // Pada contoh sebelumnya, kita menggunakan id="loader", bukan "loadingIndicator"
+      const recipeQuery = document.getElementById("recipeQuery");
+      const loader = document.getElementById("loadingIndicator"); // Ubah: Sesuaikan nama variabel jika perlu
+      const resultArea = document.getElementById("resultArea");
+
+      generateBtn.addEventListener("click", async () => {
+        const query = recipeQuery.value;
+        if (!query.trim()) {
+          alert("Tolong tulis dulu bahan-bahan atau keinginanmu!");
+          return;
+        }
+
+        // Tampilkan loading, sembunyikan hasil lama, nonaktifkan tombol
+        loader.style.display = "block";
+        resultArea.style.display = "none";
+        generateBtn.disabled = true;
+
+        try {
+          // **PENTING: Ganti URL ini dengan URL API Gateway-mu yang baru**
+          const apiUrl =
+            "https://0fzrd2ww9b.execute-api.us-east-1.amazonaws.com/default/AI-Kitchen-Assistant";
+
+          const payload = {
+            query: query,
+          };
+
+          const response = await fetch(apiUrl, {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: { "Content-Type": "application/json" },
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            // Tampilkan hasil teks resep
+            recipeText.textContent = result.recipe;
+
+            // Tampilkan hasil gambar dari data Base64
+            if (result.image) {
+              // Ini adalah baris kuncinya
+              recipeImage.src = "data:image/png;base64," + result.image;
+              recipeImage.style.display = "block";
+            }
+
+            resultArea.style.display = "block";
+          } else {
+            throw new Error(result.message || "Gagal menghasilkan resep.");
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          resultArea.textContent = `Terjadi kesalahan: ${error.message}`;
+          resultArea.style.display = "block";
+        } finally {
+          // Sembunyikan loading, aktifkan kembali tombol
+          loader.style.display = "none";
+          generateBtn.disabled = false;
+        }
+      });
+    </script>
   </body>
 </html>
