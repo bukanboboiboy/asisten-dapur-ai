@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.13",
+    "tailwindcss": "^4.1.13"
+  },
+  "name": "asisten-dapur-ai",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "tailwindcss -i ./asisten-dapur-ai/src/assets/css/input.css -o ./asisten-dapur-ai/src/assets/css/output.css --watch",
+    "build": "tailwindcss -i ./asisten-dapur-ai/src/assets/css/input.css -o ./asisten-dapur-ai/src/assets/css/output.css --minify"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
