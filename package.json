@@ -8,8 +8,8 @@
   "main": "tailwind.config.js",
   "devDependencies": {},
   "scripts": {
-    "dev": "tailwindcss -i ./asisten-dapur-ai/src/assets/css/input.css -o ./asisten-dapur-ai/src/assets/css/output.css --watch",
-    "build": "tailwindcss -i ./asisten-dapur-ai/src/assets/css/input.css -o ./asisten-dapur-ai/src/assets/css/output.css --minify"
+    "dev": "tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/output.css --watch",
+    "build": "tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/output.css --minify"
   },
   "author": "",
   "license": "ISC",
