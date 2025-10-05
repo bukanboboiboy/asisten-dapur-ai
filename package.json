@@ -6,7 +6,8 @@
   "version": "1.0.0",
   "main": "tailwind.config.js",
   "devDependencies": {},
-  "scripts": {
+"scripts": {
+    "postinstall": "npx update-browserslist-db@latest",
     "dev": "npx tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/output.css --watch",
     "build": "npx tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/output.css --minify"
   },
