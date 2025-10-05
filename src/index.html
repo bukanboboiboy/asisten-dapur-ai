@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <!-- Link to your external CSS file (kept as requested) -->
-    <link href="/asisten-dapur-ai/src/assets/css/output.css" rel="stylesheet" />
+    <link href="assets/css/output.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/script.js" />
   </head>
   <body>
@@ -28,7 +28,7 @@
     </nav>
     <!-- Hero Section -->
     <section class="hero">
-      <div class="flex flex-col w-[50%] py-10 px-10">
+      <div class="justify-center flex flex-col w-[50%] py-10 px-10">
         <div class="promptplace">
           <h1>Mau Masak Apa Hari Ini?</h1>
           <p>
@@ -69,8 +69,12 @@
         <button class="generateBtn" id="generateBtn">Buat Resep</button>
         <div class="loader" id="loadingIndicator"></div>
       </div>
-      <div class="card-container">
-        <img src="assets/img/5.png" alt="" class="background-shape" />
+      <div class="card-container h-screen overflow-hidden w-[50%]">
+        <div class="relative w-full h-100 md:h-200 overflow-hidden">
+          <div
+            class="absolute right-[-40%] top-[-5%] w-100 h-100 md:w-150 md:h-200 bg-primary rotate-70 rounded-[15%] opacity-[70%]"
+          ></div>
+        </div>
 
         <img
           src="assets/img/sepiringnasgor.png"
@@ -81,24 +85,24 @@
     </section>
 
     <!-- recipe display -->
-    <section class="flex flex-row">
+    <section class="flex flex-row mx-5">
       <div class="result-area" id="resultArea">
         <!-- Hasil resep dari AI akan muncul di sini -->
 
         <div id="recipeText"></div>
-        <div class="">
-          <img
-            id="recipeImage"
-            src=""
-            alt="Gambar Resep AI"
-            style="
-              display: none;
-              max-width: 100%;
-              border-radius: 12px;
-              margin-bottom: 25px;
-            "
-          />
-        </div>
+      </div>
+      <div class="gap-5 p-10">
+        <img
+          id="recipeImage"
+          src=""
+          alt="Gambar Resep AI"
+          style="
+            display: none;
+            max-width: 100%;
+            border-radius: 20px;
+            margin-bottom: 25px;
+          "
+        />
       </div>
     </section>
 
