@@ -13,7 +13,7 @@
     />
     <!-- Link to your external CSS file (kept as requested) -->
     <link href="assets/css/output.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/script.js" />
+
   </head>
   <body>
     <!-- Navbar -->
@@ -41,16 +41,16 @@
             <div class="toggle-slider"></div>
             <button
               class="toggle-button active"
-              onclick="showContent('indonesia', this)"
+              data-type="indonesia"
             >
               Indonesia
             </button>
-            <button class="toggle-button" onclick="showContent('asia', this)">
+            <button class="toggle-button" data-type="asia">
               Asia
             </button>
             <button
               class="toggle-button"
-              onclick="showContent('western', this)"
+              data-type="western"
             >
               Western
             </button>
@@ -109,114 +109,6 @@
     <!-- footer -->
     <footer></footer>
 
-    <script>
-      const textarea = document.getElementById("recipeQuery");
-      const generateBtn = document.getElementById("generateBtn");
-
-      // auto resize pas ngetik
-      textarea.addEventListener("input", () => {
-        textarea.style.height = "auto";
-        textarea.style.height = textarea.scrollHeight + "px";
-      });
-
-      // enter handler
-      textarea.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && !e.shiftKey) {
-          e.preventDefault(); // cegah newline
-          generateBtn.click(); // trigger tombol
-        }
-      });
-      // Pastikan ID ini cocok dengan yang ada di HTML Anda
-      // Pada contoh sebelumnya, kita menggunakan id="loader", bukan "loadingIndicator"
-      const recipeQuery = document.getElementById("recipeQuery");
-      const loader = document.getElementById("loadingIndicator"); // Ubah: Sesuaikan nama variabel jika perlu
-      const resultArea = document.getElementById("resultArea");
-
-      generateBtn.addEventListener("click", async () => {
-        const query = recipeQuery.value;
-        if (!query.trim()) {
-          alert("Tolong tulis dulu bahan-bahan atau keinginanmu!");
-          return;
-        }
-
-        // Tampilkan loading, sembunyikan hasil lama, nonaktifkan tombol
-        loader.style.display = "block";
-        resultArea.style.display = "none";
-        generateBtn.disabled = true;
-
-        try {
-          // **PENTING: Ganti URL ini dengan URL API Gateway-mu yang baru**
-          const apiUrl =
-            "https://0fzrd2ww9b.execute-api.us-east-1.amazonaws.com/default/AI-Kitchen-Assistant";
-
-          const payload = {
-            query: query,
-          };
-
-          const response = await fetch(apiUrl, {
-            method: "POST",
-            body: JSON.stringify(payload),
-            headers: { "Content-Type": "application/json" },
-          });
-
-          const result = await response.json();
-
-          if (response.ok) {
-            // Tampilkan hasil teks resep
-            recipeText.textContent = result.recipe;
-
-            // Tampilkan hasil gambar dari data Base64
-            if (result.image) {
-              // Ini adalah baris kuncinya
-              recipeImage.src = "data:image/png;base64," + result.image;
-              recipeImage.style.display = "block";
-            }
-
-            resultArea.style.display = "block";
-          } else {
-            throw new Error(result.message || "Gagal menghasilkan resep.");
-          }
-        } catch (error) {
-          console.error("Error:", error);
-          resultArea.textContent = `Terjadi kesalahan: ${error.message}`;
-          resultArea.style.display = "block";
-        } finally {
-          // Sembunyikan loading, aktifkan kembali tombol
-          loader.style.display = "none";
-          generateBtn.disabled = false;
-        }
-      });
-    </script>
-    <script>
-      const slider = document.querySelector(".toggle-slider");
-      const buttons = document.querySelectorAll(".toggle-button");
-      const contents = document.querySelectorAll(".content");
-
-      function showContent(type, clickedButton) {
-        const buttonIndex = Array.from(buttons).indexOf(clickedButton);
-        slider.style.transform = `translateX(${buttonIndex * 100}%)`;
-
-        buttons.forEach((btn) => {
-          btn.classList.remove("active", "text-white");
-          btn.classList.add("text-gray-700");
-        });
-
-        clickedButton.classList.add("active", "text-white");
-        clickedButton.classList.remove("text-gray-700");
-
-        contents.forEach((content) => {
-          if (content.id === type) {
-            content.classList.add("active");
-            content.classList.remove("opacity-0", "translate-x-5");
-            content.classList.add("opacity-100");
-            content.style.pointerEvents = "auto";
-          } else {
-            content.classList.remove("active", "opacity-100");
-            content.classList.add("opacity-0", "translate-x-5");
-            content.style.pointerEvents = "none";
-          }
-        });
-      }
-    </script>
+    <script src="assets/js/script.js"></script>
   </body>
 </html>
