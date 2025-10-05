@@ -1,8 +1,5 @@
 /* file: style.css */
 
-/* 1. Impor Tailwind (WAJIB di v4) */
-@import "tailwindcss";
-
 /* 2. Definisikan semua custom properties di :root */
 @theme {
   --color-primary: #ea5e5e;
