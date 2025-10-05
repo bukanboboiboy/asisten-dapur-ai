@@ -1,92 +1,77 @@
+/* file: style.css */
+
+/* 1. Impor Tailwind (WAJIB di v4) */
 @import "tailwindcss";
 
+/* 2. Definisikan semua custom properties di :root */
 @theme {
-  /* 1. WARNA BRAND / UTAMA */
-  /* Warna utama yang merepresentasikan brand (merah pada logo & judul) */
   --color-primary: #ea5e5e;
-  --color-primary-dark: #d94848; /* Untuk state hover */
-  --color-primary-darker: #c33f3f; /* Untuk state active/clicked */
+  --color-primary-dark: #d94848;
+  --color-primary-darker: #c33f3f;
 
-  /* 2. WARNA SEMANTIK / AKSI */
-  /* Warna untuk aksi positif atau sukses (hijau pada tombol) */
   --color-success: #98d468;
-  --color-success-dark: #82b954; /* Untuk state hover */
-
-  /* Warna untuk notifikasi error atau bahaya (walau tidak ada di desain, ini best practice) */
+  --color-success-dark: #82b954;
   --color-danger: #e53e3e;
   --color-danger-dark: #c53030;
 
-  /* 3. WARNA LATAR & PERMUKAAN (BACKGROUND & SURFACE) */
-  /* Latar belakang utama halaman */
   --color-background: #ffffff;
   --color-background-box: #f1feea;
-
-  /* Latar belakang untuk elemen di atasnya seperti input field atau card */
   --color-surface: #f1feea;
-
-  /* Warna untuk garis pemisah atau border */
   --color-border: #e0e0e0;
 
-  /* 4. WARNA TEKS */
-  /* Warna teks yang paling dominan */
   --color-text-primary: #555555;
-
-  /* Warna teks sekunder yang kurang dominan (deskripsi, sub-judul) */
   --color-text-secondary: #888888;
-
-  /* Warna teks yang kontras untuk diletakkan di atas background warna primer */
   --color-text-on-primary: #ffffff;
-
-  /* Warna teks yang kontras untuk diletakkan di atas background warna sukses */
   --color-text-on-success: #ffffff;
-  /*  */
 }
 
-/* file: style.css atau input.css */
-
-/* Ini adalah 3 baris standar yang WAJIB ada */
-
-@reference base, components, utilities;
-
-/* Sekarang Anda bisa menambahkan komponen custom dengan @apply */
+/* 3. Komponen Custom */
 @layer components {
+  /* Tombol Generate */
   .generateBtn {
-    /* 'success' sekarang sudah dikenali oleh Tailwind dari config di atas */
-    @apply bg-success text-white font-bold py-2 px-4 w-60 rounded items-center justify-center hover:bg-success-dark;
+    @apply bg-[var(--color-success)] text-white font-bold py-2 px-4 w-60 rounded items-center justify-center hover:bg-[var(--color-success-dark)] mx-auto;
   }
+
   body {
-    @apply bg-background;
-    font-family: monserat alternates;
+    @apply bg-[var(--color-background)];
+    font-family: "Montserrat Alternates", sans-serif;
   }
+
+  /* Navbar */
   .navbar {
-    @apply text-text-secondary flex flex-row justify-between p-5 px-28 bg-background drop-shadow-text-secondary drop-shadow-xs z-100;
+    @apply text-[var(--color-text-secondary)] flex flex-row justify-between p-5 px-28 bg-[var(--color-background)] shadow-sm z-[100];
   }
+
   .navbar > ul {
     @apply flex flex-row justify-center gap-7;
   }
+
   .navbar > ul > li > a {
-    @apply text-xl  hover:text-primary;
+    @apply text-xl hover:text-[var(--color-primary)];
   }
+
   .navbar > ul > a {
-    @apply text-2xl  hover:text-primary flex flex-row gap-5;
+    @apply text-2xl hover:text-[var(--color-primary)] flex flex-row gap-5;
   }
+
+  /* Hero Section */
   .hero {
     @apply justify-start text-left flex flex-row;
   }
-  .promptplace {
-    @apply ;
-  }
 
   textarea {
-    @apply bg-surface border-text-primary border-1 rounded-2xl w-170 inset-shadow-sm/30 p-5;
+    @apply bg-[var(--color-surface)] border border-[var(--color-text-primary)] rounded-2xl w-[680px] shadow-inner p-5 resize-none overflow-hidden;
   }
+
   h1 {
-    @apply font-semibold text-primary text-5xl;
+    @apply font-semibold text-[var(--color-primary)] text-5xl;
   }
+
   p {
     @apply py-5;
   }
 
+  /* Loader */
   .loader {
     border: 5px solid #282828;
     border-top: 5px solid black;
@@ -106,57 +91,64 @@
       transform: rotate(360deg);
     }
   }
-  /* 2. Buat kelas kustom Anda di sini */
+
+  /* Card Container */
   .card-container {
     @apply relative w-[1500px] h-[900px] overflow-hidden;
   }
 
   .background-shape {
-    @apply absolute top-[0px] -right-[0px] w-[1900px] h-[2500px] z-10;
+    @apply absolute top-0 right-0 w-[1900px] h-[2500px] z-10;
   }
 
   .food-image {
-    @apply absolute -top-[50px] -right-[0px] w-full h-auto z-20 mt-[50px];
+    @apply absolute -top-[50px] right-0 w-full h-auto z-20 mt-[50px];
   }
-  /* Menggunakan @apply untuk kemudahan, bisa juga ditulis sebagai kelas biasa di HTML */
+
+  /* Toggle Switch */
   .toggle-container {
-    @apply flex rounded-[30px] p-[5px] relative mb-5;
+    @apply flex rounded-[30px] p-[5px] relative mb-5 bg-[var(--color-background-box)];
   }
+
   .toggle-slider {
-    @apply absolute top-[5px] left-[5px] h-[calc(100%-10px)] bg-success-dark rounded-[30px] z-[1];
-    /* UBAH LEBARNYA jadi 1/3 dari ruang yang tersedia */
+    @apply absolute top-[5px] left-[5px] h-[calc(100%-10px)] bg-[var(--color-success-dark)] rounded-[30px] z-[1];
     width: calc((100% - 10px) / 3);
     transition: transform 0.3s ease-in-out;
   }
+
   .toggle-button {
     @apply flex-1 border-none py-2.5 px-5 rounded-full cursor-pointer bg-transparent transition-colors duration-300 ease-in-out relative z-[2] text-gray-700;
   }
+
   .toggle-button.active {
-    @apply text-white; /* Teks jadi putih saat aktif */
+    @apply text-white;
   }
 
-  /* Wrapper untuk konten */
+  /* Konten */
   .content-wrapper {
     @apply relative min-h-[100px] overflow-hidden;
   }
+
   .content {
     @apply p-[15px] border border-gray-200 rounded-[10px] bg-gray-50 absolute w-full opacity-0;
     transform: translateX(20px);
     transition: opacity 0.4s ease-out, transform 0.4s ease-out;
     pointer-events: none;
   }
+
   .content.active {
-    @apply opacity-100; /* INI HARUS 100 agar terlihat */
+    @apply opacity-100;
     transform: translateX(0);
     pointer-events: auto;
   }
+
   /* Area Hasil */
   .result-area {
-    @apply flex-row mt-10 text-left border border-[var(--border-color)] rounded-xl p-[30px] hidden bg-gray-50 whitespace-pre-wrap leading-[1.7];
+    @apply flex-row mt-10 text-left border border-[var(--color-border)] rounded-xl p-[30px] hidden bg-[var(--color-surface)] whitespace-pre-wrap leading-[1.7];
   }
 
-  /* Loading Spinner */
+  /* Spinner Loading */
   .loader {
-    @apply border-[5px] border-gray-100 border-t-[var(--primary-color)] rounded-full w-10 h-10 animate-spin my-5 mx-auto hidden;
+    @apply border-[5px] border-gray-100 border-t-[var(--color-primary)] rounded-full w-10 h-10 animate-spin my-5 mx-auto hidden;
   }
 }
