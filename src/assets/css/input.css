@@ -1,7 +1,10 @@
-/* file: style.css */
+/* 1. Tambahkan 3 baris ini di paling atas. WAJIB! */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* 2. Definisikan semua custom properties di :root */
-@theme {
+/* 2. Ganti @theme dengan :root agar sesuai standar CSS */
+:root {
   --color-primary: #ea5e5e;
   --color-primary-dark: #d94848;
   --color-primary-darker: #c33f3f;
@@ -31,6 +34,7 @@
 
   body {
     @apply bg-[var(--color-background)];
+    /* Pastikan font ini di-import di HTML jika ingin dipakai */
     font-family: "Montserrat Alternates", sans-serif;
   }
 
@@ -40,7 +44,7 @@
   }
 
   .navbar > ul {
-    @apply flex flex-row justify-center gap-7;
+    @apply flex flex-row items-center justify-center gap-7;
   }
 
   .navbar > ul > li > a {
@@ -48,7 +52,7 @@
   }
 
   .navbar > ul > a {
-    @apply text-2xl hover:text-[var(--color-primary)] flex flex-row gap-5;
+    @apply text-2xl hover:text-[var(--color-primary)] flex flex-row gap-5 font-bold;
   }
 
   /* Hero Section */
@@ -66,27 +70,6 @@
 
   p {
     @apply py-5;
-  }
-
-  /* Loader */
-  .loader {
-    border: 5px solid #282828;
-    border-top: 5px solid black;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin: 20px auto;
-    display: none;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
   }
 
   /* Card Container */
@@ -121,31 +104,13 @@
     @apply text-white;
   }
 
-  /* Konten */
-  .content-wrapper {
-    @apply relative min-h-[100px] overflow-hidden;
-  }
-
-  .content {
-    @apply p-[15px] border border-gray-200 rounded-[10px] bg-gray-50 absolute w-full opacity-0;
-    transform: translateX(20px);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-    pointer-events: none;
-  }
-
-  .content.active {
-    @apply opacity-100;
-    transform: translateX(0);
-    pointer-events: auto;
-  }
-
   /* Area Hasil */
   .result-area {
-    @apply flex-row mt-10 text-left border border-[var(--color-border)] rounded-xl p-[30px] hidden bg-[var(--color-surface)] whitespace-pre-wrap leading-[1.7];
+    @apply hidden flex-row mt-10 text-left border border-[var(--color-border)] rounded-xl p-[30px] bg-[var(--color-surface)] whitespace-pre-wrap leading-[1.7];
   }
 
-  /* Spinner Loading */
+  /* Spinner Loading (Versi yang sudah digabung dan benar) */
   .loader {
-    @apply border-[5px] border-gray-100 border-t-[var(--color-primary)] rounded-full w-10 h-10 animate-spin my-5 mx-auto hidden;
+    @apply border-[5px] border-gray-200 border-t-[var(--color-primary)] rounded-full w-10 h-10 animate-spin my-5 mx-auto hidden;
   }
 }
