@@ -39,11 +39,7 @@
 
   /* Navbar */
   .navbar {
-    @apply text-[var(--color-text-secondary)] flex flex-row justify-between p-5 px-28 bg-[var(--color-background)] shadow-sm z-[100];
-  }
-
-  .navbar > ul {
-    @apply flex flex-row justify-center gap-7;
+    @apply text-[var(--color-text-secondary)] flex flex-row justify-between p-5 md:px-28 px-8 bg-[var(--color-background)] shadow-sm z-[100];
   }
 
   .navbar > ul > li > a {
@@ -60,7 +56,7 @@
   }
 
   textarea {
-    @apply bg-[var(--color-surface)] border border-[var(--color-text-primary)] rounded-2xl w-[680px] shadow-inner p-5 resize-none overflow-hidden;
+    @apply bg-[var(--color-surface)] border border-[var(--color-text-primary)] rounded-2xl w-full shadow-inner p-5 resize-none overflow-hidden;
   }
 
   h1 {
@@ -144,7 +140,7 @@
 
   /* Area Hasil */
   .result-area {
-    @apply flex-row mt-10 text-left border border-[var(--color-border)] rounded-xl p-[30px] hidden bg-[var(--color-surface)] whitespace-pre-wrap leading-[1.7];
+    @apply mt-[calc(var(--spacing)*10)] items-start hidden flex-row rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 text-left leading-[1.7] whitespace-pre-wrap;
   }
 
   /* Spinner Loading */

@@ -13,22 +13,19 @@
     />
     <!-- Link to your external CSS file (kept as requested) -->
     <link href="assets/css/output.css" rel="stylesheet" />
-
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar">
-      <ul>
-        <a href="">SmartChef </a>
-      </ul>
-      <ul>
+      <a href="" class="text-xl hover:text-[var(--color-primary)]">SmartChef</a>
+      <ul class="flex gap-x-8">
         <li><a href="">Home</a></li>
         <li><a href="">About</a></li>
       </ul>
     </nav>
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="justify-center flex flex-col w-[50%] py-10 px-10">
+    <section class="hero flex flex-wrap md:flex-row flex-col-reverse">
+      <div class="justify-center flex flex-col md:w-[50%] w-full py-10 px-10">
         <div class="promptplace">
           <h1>Mau Masak Apa Hari Ini?</h1>
           <p>
@@ -39,21 +36,11 @@
 
           <div class="toggle-container">
             <div class="toggle-slider"></div>
-            <button
-              class="toggle-button active"
-              data-type="indonesia"
-            >
+            <button class="toggle-button active" data-type="indonesia">
               Indonesia
             </button>
-            <button class="toggle-button" data-type="asia">
-              Asia
-            </button>
-            <button
-              class="toggle-button"
-              data-type="western"
-            >
-              Western
-            </button>
+            <button class="toggle-button" data-type="asia">Asia</button>
+            <button class="toggle-button" data-type="western">Western</button>
           </div>
           <!-- Input area for user query -->
           <div class="inputarea">
@@ -69,7 +56,9 @@
         <button class="generateBtn" id="generateBtn">Buat Resep</button>
         <div class="loader" id="loadingIndicator"></div>
       </div>
-      <div class="card-container h-screen overflow-hidden w-[50%]">
+      <div
+        class="card-container h-screen overflow-hidden md:w-[50%] w-full hidden md:block"
+      >
         <div class="relative w-full h-100 md:h-200 overflow-hidden">
           <div
             class="absolute right-[-40%] top-[-5%] w-100 h-100 md:w-150 md:h-200 bg-primary rotate-70 rounded-[15%] opacity-[70%]"
@@ -85,13 +74,13 @@
     </section>
 
     <!-- recipe display -->
-    <section class="flex flex-row mx-5">
-      <div class="result-area" id="resultArea">
+    <section class="flex md:flex-row flex-col-reverse mx-5">
+      <div class="result-area w-full" id="resultArea">
         <!-- Hasil resep dari AI akan muncul di sini -->
 
         <div id="recipeText"></div>
       </div>
-      <div class="gap-5 p-10">
+      <div class="p-10 w-full">
         <img
           id="recipeImage"
           src=""
